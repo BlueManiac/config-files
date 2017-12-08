@@ -131,5 +131,10 @@ $filePath = 'C:\.gitconfig'
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-files/master/.gitconfig" -OutFile $filePath
 
 
+# Copy mercurial.ini
+$filePath = "$env:USERPROFILE\mercurial.ini"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-files/master/mercurial.ini" -OutFile $filePath
+
+
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
