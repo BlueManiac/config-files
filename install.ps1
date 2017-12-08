@@ -75,6 +75,8 @@ cd posh-hg
 .\install.ps1
 . $PROFILE
 
+# Refresh path for git and mercurial
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
 # Show file extensions
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name HideFileExt -Value 0
@@ -85,29 +87,32 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name ConsentPromptBehaviorAdmin -Value 0
 
 # Disable Cortana
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name AllowCortana -Value 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name AllowCortana -Value 0 -Force
 
 # Enable developer mode in windows 10
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name AllowDevelopmentWithoutDevLicense -Value 1
 
 
 # Remove Shortcuts
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\VLC media player.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Speccy.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\CCleaner.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Google Chrome.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Oracle VM VirtualBox.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Steam.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Skype.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Evernote.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Mozilla Firefox.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Acrobat Reader DC.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\mRemoteNG.lnk"
-
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\TeamViewer 12.lnk"
-Remove-Item "$Env:SystemDir\Users\Public\Desktop\Visual Studio Code.lnk"
-Remove-Item "$Env:SystemDir\Users\$Env:UserName\Desktop\LINQPad 5.lnk"
-Remove-Item "$Env:SystemDir\Users\$Env:UserName\Desktop\Discord.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\VLC media player.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Speccy.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\CCleaner.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Google Chrome.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Oracle VM VirtualBox.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Steam.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Skype.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Evernote.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Mozilla Firefox.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Acrobat Reader DC.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\mRemoteNG.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\TeamViewer 12.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Visual Studio Code.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\LINQPad 5.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\Discord.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\Spotify.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\SourceTree.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\Google Chrome.lnk"
+Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\paint.net.lnk"
 
 
 # Improve powershell startup time (using NGEN on Posh binaries)
@@ -126,7 +131,7 @@ $githubUrl = 'https://raw.githubusercontent.com/BlueManiac/config-files/master'
 # Replace notepad with notepad++
 $filePath = 'C:\Program Files\Notepad++\Notepad++ParamProxy.exe'
 Invoke-WebRequest -Uri "$githubUrl/Notepad++/Notepad++ParamProxy.exe" -OutFile $filePath
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" -Name Debugger -Value """$filePath"""
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" -Name Debugger -Value """$filePath""" -Force
 
 
 # Copy .gitconfig
