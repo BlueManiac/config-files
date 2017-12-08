@@ -20,3 +20,6 @@ ci = commit
 st = status
 addremove = add -A
 ar = add -A
+
+[core]
+editor = notepad

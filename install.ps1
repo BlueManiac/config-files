@@ -125,5 +125,10 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-file
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" -Name Debugger -Value """$filePath"""
 
 
+# Copy .gitconfig
+$filePath = 'C:\.gitconfig'
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-files/master/.gitconfig" -OutFile $filePath
+
+
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
