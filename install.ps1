@@ -119,21 +119,24 @@ $env:path = [Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
   ngen install $_.location | % {"`t$_"}
 }
 
+# Url to github repository
+$githubUrl = 'https://raw.githubusercontent.com/BlueManiac/config-files/master'
+
 
 # Replace notepad with notepad++
 $filePath = 'C:\Program Files\Notepad++\Notepad++ParamProxy.exe'
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-files/master/Notepad++/Notepad++ParamProxy.exe" -OutFile $filePath
+Invoke-WebRequest -Uri "$githubUrl/Notepad++/Notepad++ParamProxy.exe" -OutFile $filePath
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" -Name Debugger -Value """$filePath"""
 
 
 # Copy .gitconfig
 $filePath = 'C:\.gitconfig'
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-files/master/.gitconfig" -OutFile $filePath
+Invoke-WebRequest -Uri "$githubUrl/.gitconfig" -OutFile $filePath
 
 
 # Copy mercurial.ini
 $filePath = "$env:USERPROFILE\mercurial.ini"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/BlueManiac/config-files/master/mercurial.ini" -OutFile $filePath
+Invoke-WebRequest -Uri "$githubUrl/mercurial.ini" -OutFile $filePath
 
 
 Write-Host "Press any key to continue ..."
