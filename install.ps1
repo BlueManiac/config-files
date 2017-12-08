@@ -13,6 +13,7 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # Setup Chocolatey
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
+
 # Install applications
 choco install -y 7zip
 choco install -y adobereader
