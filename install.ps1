@@ -139,6 +139,7 @@ $githubUrl = 'https://raw.githubusercontent.com/BlueManiac/config-files/master'
 # Replace notepad with notepad++
 $filePath = 'C:\Program Files\Notepad++\Notepad++ParamProxy.exe'
 Invoke-WebRequest -Uri "$githubUrl/Notepad++/Notepad++ParamProxy.exe" -OutFile $filePath
+New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options" -Name "notepad.exe" -Force
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe" -Name Debugger -Value """$filePath""" -Force
 
 
