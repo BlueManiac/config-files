@@ -41,6 +41,7 @@ choco install -y paint.net
 choco install -y poshgit
 choco install -y prefix
 choco install -y procexp
+choco install -y reportviewer2010sp1
 choco install -y rufus
 choco install -y skype
 choco install -y SourceTree
