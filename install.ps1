@@ -65,6 +65,11 @@ choco install -y visualstudio2017-workload-netcoretools
 choco install -y resharper
 
 
+# Install powershell modules
+Install-PackageProvider -Name NuGet -Force
+Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
+
+
 # Refresh path for git and mercurial
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
