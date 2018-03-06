@@ -20,7 +20,8 @@ choco install -y adobereader
 choco install -y autohotkey
 choco install -y autoit
 choco install -y autoruns
-choco install -y beyondcompare -version 3.3.12.18414
+choco install -y beyondcompare --version 3.3.13.18981
+choco pin add --name beyondcompare --version 3.3.13.18981
 choco install -y ccleaner
 choco install -y discord
 choco install -y evernote
@@ -41,7 +42,6 @@ choco install -y paint.net
 choco install -y poshgit
 choco install -y prefix
 choco install -y procexp
-choco install -y reportviewer2010sp1
 choco install -y rufus
 choco install -y skype
 choco install -y SourceTree
