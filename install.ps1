@@ -63,6 +63,7 @@ choco install -y visualstudio2017-workload-manageddesktop
 choco install -y visualstudio2017-workload-netweb
 choco install -y visualstudio2017-workload-node
 choco install -y visualstudio2017-workload-netcoretools
+choco install -y visualstudio2017-workload-nativedesktop
 choco install -y resharper
 
 
