@@ -49,6 +49,7 @@ choco install -y speccy
 choco install -y spotify
 choco install -y steam
 choco install -y teamviewer
+choco pin add --name teamviewer --version 13.2.5287
 choco install -y tightvnc --install-arguments 'ADDLOCAL="Viewer" VIEWER_ASSOCIATE_VNC_EXTENSION=1 VIEWER_ADD_FIREWALL_EXCEPTION=1'
 choco install -y virtualbox
 choco install -y vagrant
