@@ -1,0 +1,29 @@
+[diff]
+tool = bc3
+
+[difftool "bc3"]
+path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
+cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -leftreadonly "$LOCAL" "$REMOTE"
+trustExitCode = true
+
+[merge]
+tool = bc3
+
+[mergetool "bc3"]
+path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
+cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -leftreadonly -centerreadonly "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+trustExitcode = true
+
+[alias]
+bc = !git ar && git difftool --dir-diff --staged && git ar && :
+ci = commit
+st = status
+addremove = add -A
+ar = add -A
+
+[core]
+editor = notepad
+
+[user]
+name = BlueManiac
+email = bluemaniac@users.noreply.github.com
