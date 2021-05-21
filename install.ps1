@@ -29,7 +29,6 @@ choco install -y google-backup-and-sync
 choco install -y googlechrome
 choco install -y instanteyedropper
 choco install -y irfanview
-choco install -y jdk8
 choco install -y jre8
 choco install -y keepass
 choco install -y linqpad
