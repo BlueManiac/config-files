@@ -66,6 +66,11 @@ choco install -y visualstudio2019-workload-netcoretools
 choco install -y visualstudio2019-workload-nativedesktop
 
 
+# Office 365
+# Installs Excel, Powerpoint, Word, OneDrive, OneNote, Outlook
+choco install -y office365business /exclude:"Access Groove Lync Publisher" /updates:"FALSE" /eula:"TRUE"
+
+
 # Install powershell modules
 Install-PackageProvider -Name NuGet -Force
 Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
