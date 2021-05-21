@@ -16,75 +16,61 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 
 # Install applications
 choco install -y 7zip
-choco install -y adobereader
 choco install -y autohotkey
-choco install -y autoit
 choco install -y autoruns
+choco install -y azure-cli
 choco install -y beyondcompare --version 3.3.13.18981
 choco pin add --name beyondcompare --version 3.3.13.18981
 choco install -y ccleaner
 choco install -y discord
-choco install -y evernote
-choco install -y firefox
+choco install -y docker-desktop
 choco install -y git
+choco install -y google-backup-and-sync
 choco install -y googlechrome
-choco install -y hg
+choco install -y instanteyedropper
 choco install -y irfanview
 choco install -y jdk8
 choco install -y jre8
+choco install -y keepass
 choco install -y linqpad
+choco install -y microsoft-teams
+choco install -y microsoft-windows-terminal
+choco install -y microsoftazurestorageexplorer
 choco install -y mRemoteNG
 choco install -y sql-server-management-studio
 choco install -y nodejs
 choco install -y notepadplusplus
 choco install -y nuget.commandline
 choco install -y paint.net
-choco install -y poshgit
-choco install -y prefix
-choco install -y procexp
+choco install -y postman
 choco install -y rufus
-choco install -y skype
-choco install -y SourceTree
 choco install -y speccy
 choco install -y spotify
 choco install -y steam
+choco install -y sumatrapdf
 choco install -y teamviewer --version 13.2.5287
 choco pin add --name teamviewer --version 13.2.5287
 choco install -y tightvnc --install-arguments 'ADDLOCAL="Viewer" VIEWER_ASSOCIATE_VNC_EXTENSION=1 VIEWER_ADD_FIREWALL_EXCEPTION=1'
 choco install -y virtualbox
-choco install -y vagrant
 choco install -y VisualStudioCode
 choco install -y vlc
+choco install -y vscode
+choco install -y windirstat
 
 
 # Visual studio
-# See https://chocolatey.org/packages/visualstudio2017enterprise for other development packages
-choco install -y visualstudio2017enterprise
-choco install -y visualstudio2017-workload-manageddesktop
-choco install -y visualstudio2017-workload-netweb
-choco install -y visualstudio2017-workload-node
-choco install -y visualstudio2017-workload-netcoretools
-choco install -y visualstudio2017-workload-nativedesktop
-choco install -y resharper
+# See https://chocolatey.org/packages/visualstudio2019enterprise for other development packages
+choco install -y visualstudio2019enterprise
+choco install -y visualstudio2019-workload-manageddesktop
+choco install -y visualstudio2019-workload-netweb
+choco install -y visualstudio2019-workload-netcoretools
+choco install -y visualstudio2019-workload-nativedesktop
 
 
 # Install powershell modules
 Install-PackageProvider -Name NuGet -Force
 Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
 
-
-# Refresh path for git and mercurial
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
-
-# install posh-hg
-cd $env:ProgramFiles
-git clone https://github.com/JeremySkinner/posh-hg.git
-cd posh-hg
-.\install.ps1
-. $PROFILE
-
-# Refresh path for git and mercurial
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 
 # Show file extensions
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name HideFileExt -Value 0
@@ -126,15 +112,6 @@ Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\De
 Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\paint.net.lnk"
 
 
-# Improve powershell startup time (using NGEN on Posh binaries)
-$env:path = [Runtime.InteropServices.RuntimeEnvironment]::GetRuntimeDirectory()
-[AppDomain]::CurrentDomain.GetAssemblies() | % {
-  if (! $_.location) {continue}
-  $Name = Split-Path $_.location -leaf
-  Write-Host -ForegroundColor Yellow "NGENing : $Name"
-  ngen install $_.location | % {"`t$_"}
-}
-
 # Url to github repository
 $githubUrl = 'https://raw.githubusercontent.com/BlueManiac/config-files/master'
 
@@ -149,11 +126,6 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image
 # Copy .gitconfig
 $filePath = 'C:\.gitconfig'
 Invoke-WebRequest -Uri "$githubUrl/.gitconfig" -OutFile $filePath
-
-
-# Copy mercurial.ini
-$filePath = "$env:USERPROFILE\mercurial.ini"
-Invoke-WebRequest -Uri "$githubUrl/mercurial.ini" -OutFile $filePath
 
 
 Write-Host "Press any key to continue ..."
