@@ -50,7 +50,7 @@ choco install -y sumatrapdf
 choco install -y teamviewer --version 13.2.5287
 choco pin add --name teamviewer --version 13.2.5287
 choco install -y tightvnc --install-arguments 'ADDLOCAL="Viewer" VIEWER_ASSOCIATE_VNC_EXTENSION=1 VIEWER_ADD_FIREWALL_EXCEPTION=1'
-choco install -y virtualbox
+#choco install -y virtualbox
 choco install -y VisualStudioCode
 choco install -y vlc
 choco install -y vscode
