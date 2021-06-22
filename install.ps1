@@ -33,7 +33,7 @@ choco install -y jre8
 choco install -y keepass
 choco install -y linqpad
 choco install -y microsoft-teams
-choco install -y microsoft-windows-terminal
+choco install -y microsoft-windows-terminal --pre 
 choco install -y microsoftazurestorageexplorer
 choco install -y mRemoteNG
 choco install -y sql-server-management-studio
