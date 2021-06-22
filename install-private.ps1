@@ -97,7 +97,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image
 
 
 # Copy .gitconfig
-$filePath = 'C:\.gitconfig'
+$filePath = "$Env:UserProfile\.gitconfig"
 Invoke-WebRequest -Uri "$githubUrl/.gitconfig-private" -OutFile $filePath
 
 
