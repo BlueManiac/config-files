@@ -41,10 +41,10 @@ choco install -y nodejs
 choco install -y notepadplusplus
 choco install -y nuget.commandline
 choco install -y paint.net
-#choco install -y postman
+choco install -y postman
 choco install -y rufus
 choco install -y speccy
-#choco install -y spotify
+choco install -y spotify
 choco install -y steam
 choco install -y sumatrapdf
 choco install -y teamviewer --version 13.2.5287
