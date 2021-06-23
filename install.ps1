@@ -94,26 +94,9 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModel
 Set-ItemProperty -Force -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value 0 
 
 
-# Remove Shortcuts
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\VLC media player.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Speccy.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\CCleaner.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Google Chrome.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Oracle VM VirtualBox.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Steam.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Skype.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Evernote.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Mozilla Firefox.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Acrobat Reader DC.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\mRemoteNG.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\TeamViewer 12.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\Visual Studio Code.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\LINQPad 5.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\Discord.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\Spotify.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\SourceTree.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\$Env:UserName\Desktop\Google Chrome.lnk"
-Remove-Item -ErrorAction SilentlyContinue "$Env:SystemDir\Users\Public\Desktop\paint.net.lnk"
+# Remove Shortcuts on desktop
+Get-ChildItem -Path "$Env:SystemDir\Users\Public\Desktop" *.lnk | foreach { Remove-Item -Path $_.FullName }
+Get-ChildItem -Path "$Env:UserProfile\Desktop" *.lnk | foreach { Remove-Item -Path $_.FullName }
 
 
 # Url to github repository
