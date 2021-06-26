@@ -115,5 +115,20 @@ $filePath = "$Env:UserProfile\.gitconfig"
 Invoke-WebRequest -Uri "$githubUrl/.gitconfig" -OutFile $filePath
 
 
+# Create directories
+New-Item -ItemType directory -ErrorAction SilentlyContinue -Path 'C:\Private'
+New-Item -ItemType directory -ErrorAction SilentlyContinue -Path 'C:\Repositories'
+
+
+# Add Windows Defender exclusions
+Add-MpPreference -ExclusionPath 'C:\Private'
+Add-MpPreference -ExclusionPath 'C:\Repositories'
+Add-MpPreference -ExclusionPath 'C:\Program Files (x86)\Microsoft Visual Studio'
+Add-MpPreference -ExclusionPath 'C:\Program Files (x86)\MSBuild'
+Add-MpPreference -ExclusionProcess 'devenv.exe'
+Add-MpPreference -ExclusionProcess 'dotnet.exe'
+Add-MpPreference -ExclusionProcess 'msbuild.exe'
+
+
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
