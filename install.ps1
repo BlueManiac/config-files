@@ -39,7 +39,6 @@ choco install -y mRemoteNG
 choco install -y sql-server-management-studio
 choco install -y nodejs
 choco install -y notepadplusplus
-choco install -y nuget.commandline
 choco install -y paint.net
 choco install -y postman
 choco install -y rufus
@@ -74,6 +73,7 @@ choco install -y visualstudio2019-workload-nativedesktop
 # Install powershell modules
 Install-PackageProvider -Name NuGet -Force
 Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
+refreshenv
 
 
 # Show file extensions
@@ -113,6 +113,10 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image
 # Copy .gitconfig
 $filePath = "$Env:UserProfile\.gitconfig"
 Invoke-WebRequest -Uri "$githubUrl/.gitconfig" -OutFile $filePath
+
+
+# Add nuget sources
+dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
 
 
 # Create directories
