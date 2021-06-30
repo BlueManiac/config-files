@@ -134,5 +134,11 @@ Add-MpPreference -ExclusionProcess 'dotnet.exe'
 Add-MpPreference -ExclusionProcess 'msbuild.exe'
 
 
+# Disable Chrome Software Reporter Tool from eating my CPU
+New-Item -Path "HKLM:\SOFTWARE\Policies\Google" -Name "Chrome" -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name ChromeCleanupEnabled -Value 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name ChromeCleanupReportingEnabled -Value 0
+
+
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
