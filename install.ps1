@@ -140,5 +140,9 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name ChromeClean
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name ChromeCleanupReportingEnabled -Value 0
 
 
+# Disable OneDrive personal account (use business only)
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\OneDrive" -Name DisablePersonalSync -Value 1
+
+
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
