@@ -3,7 +3,7 @@ tool = bc3
 
 [difftool "bc3"]
 path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
-cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -leftreadonly "$LOCAL" "$REMOTE"
+cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -expandall -leftreadonly "$LOCAL" "$REMOTE"
 trustExitCode = true
 
 [merge]
