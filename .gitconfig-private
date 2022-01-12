@@ -15,7 +15,7 @@ cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -leftreadonly -ce
 trustExitcode = true
 
 [alias]
-bc = !git ar && git difftool --dir-diff --staged && git ar && :
+bc = !git ar && git difftool --dir-diff --no-symlinks --staged && git ar && :
 ci = commit
 st = status
 addremove = add -A
