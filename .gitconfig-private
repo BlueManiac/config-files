@@ -20,6 +20,7 @@ ci = commit
 st = status
 addremove = add -A
 ar = add -A
+discard = !git reset --hard && git clean -fxd
 
 [core]
 editor = notepad
