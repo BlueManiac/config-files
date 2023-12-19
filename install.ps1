@@ -55,7 +55,7 @@ winget install --exact --source winget --scope user --id Microsoft.WindowsTermin
 winget install --exact --source winget --id Microsoft.VisualStudio.2022.Enterprise --override "--wait --passive --norestart --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Workload.ManagedDesktop"
 
 # Reload enviroment variables
-$Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "Machine")
+$Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 # Install powershell modules
 Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
