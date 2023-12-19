@@ -30,7 +30,6 @@ winget install --exact --source winget --scope machine --id Brave.Brave
 #winget install --exact --source winget --scope machine --id DominikReichl.KeePass
 winget install --exact --source winget --scope machine --id Git.Git
 winget install --exact --source winget --scope machine --id GitHub.cli
-winget install --exact --source winget --scope machine --id LINQPad.LINQPad.7
 winget install --exact --source winget --scope machine --id Microsoft.AzureCLI
 winget install --exact --source winget --scope machine --id Microsoft.PowerToys
 #winget install --exact --source winget --scope machine --id Microsoft.SQLServerManagementStudio
@@ -51,10 +50,9 @@ winget install --exact --source winget --scope machine --id pnpm
 winget install --exact --source winget --scope user --id Discord.Discord
 winget install --exact --source winget --scope user --id Microsoft.AzureDataStudio
 winget install --exact --source winget --scope user --id Microsoft.WindowsTerminal
-winget install --exact --source winget --scope user --id Spotify.Spotify # Can't be installed in admin console
 
 # Visual studio, Workloads: https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-enterprise?view=vs-2022&preserve-view=true
-winget install --exact --source winget --id Microsoft.VisualStudio.2022.Enterprise --override "--wait --passive --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Workload.ManagedDesktop"
+winget install --exact --source winget --id Microsoft.VisualStudio.2022.Enterprise --override "--wait --passive --norestart --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Workload.ManagedDesktop"
 
 # Reload enviroment variables
 $Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
@@ -63,9 +61,10 @@ $Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
 
 # Windows features
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart
 
 # dotnet tools
+dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"
 dotnet tool install --global dotnet-outdated-tool
 dotnet tool install --global dotnet-format
 

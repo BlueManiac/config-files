@@ -1,0 +1,1 @@
+winget install --exact --source winget --scope user --id Spotify.Spotify # Can't be installed in admin console
