@@ -6,6 +6,17 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   break
 }
 
+# Update winget to latest version
+$path = "$($env:TEMP)\Setup.msix"
+$url = (Invoke-WebRequest -Uri "https://api.github.com/repos/microsoft/winget-cli/releases/latest").Content |
+	ConvertFrom-Json |
+	Select-Object -ExpandProperty "assets" |
+	Where-Object "browser_download_url" -Match '.msixbundle' |
+	Select-Object -ExpandProperty "browser_download_url"
+Invoke-WebRequest -Uri $url -OutFile $path -UseBasicParsing
+Add-AppxPackage -Path $path
+Remove-Item $path
+
 # APPLICATIONS
 
 # Microsoft store apps
