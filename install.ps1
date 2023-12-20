@@ -6,6 +6,41 @@ If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   break
 }
 
+# TWEAKS
+
+# Show file extensions
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name HideFileExt -Value 0
+
+# Enable developer mode in windows 10/11
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name AllowDevelopmentWithoutDevLicense -Value 1
+
+# Use old context menu in windows 11
+New-Item -Force -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Name "InprocServer32"
+Set-ItemProperty -Force -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Value ''
+
+# Set the default action of the power button on the Start menu to Shut Down
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name PowerButtonAction -Value 2
+
+# Hide the search bar
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name SearchboxTaskbarMode -Value 0
+
+# Hide the task view button
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name ShowTaskViewButton -Value 0
+
+# Hide the widgets button
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name TaskbarDa -Value 0
+
+# Hide the chat button
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name TaskbarMn -Value 0
+
+# Set windows to dark mode
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name SystemUsesLightTheme -Value 0
+
+# Disable Startup App Notifications
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp" -Name Enabled -Value 0
+
+# APPLICATIONS
+
 # Update winget to latest version
 $path = "$($env:TEMP)\Setup.msix"
 $url = (Invoke-WebRequest -Uri "https://api.github.com/repos/microsoft/winget-cli/releases/latest").Content |
@@ -16,8 +51,6 @@ $url = (Invoke-WebRequest -Uri "https://api.github.com/repos/microsoft/winget-cl
 Invoke-WebRequest -Uri $url -OutFile $path -UseBasicParsing
 Add-AppxPackage -Path $path
 Remove-Item $path
-
-# APPLICATIONS
 
 # Microsoft store apps
 winget install --exact --source msstore --id 9P07XNM5CHP0 --accept-package-agreements # Ambie
@@ -67,37 +100,6 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRes
 dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"
 dotnet tool install --global dotnet-outdated-tool
 dotnet tool install --global dotnet-format
-
-# TWEAKS
-
-# Show file extensions
-Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name HideFileExt -Value 0
-
-# Enable developer mode in windows 10/11
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name AllowDevelopmentWithoutDevLicense -Value 1
-
-# Use old context menu in windows 11
-New-Item -Force -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Name "InprocServer32"
-Set-ItemProperty -Force -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Value ''
-
-# Disable OneDrive personal account (use business only)
-Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\OneDrive" -Name DisablePersonalSync -Value 1
-
-# Set the default action of the power button on the Start menu to Shut Down
-Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name PowerButtonAction -Value 2
-
-# Hide the search bar
-Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name SearchboxTaskbarMode -Value 0
-
-# Hide the task view button
-Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name ShowTaskViewButton -Value 0
-
-# Hide the widgets button
-Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name TaskbarDa -Value 0
-
-# Hide the chat button
-Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name TaskbarMn -Value 0
-
 
 # VARIOUS
 
