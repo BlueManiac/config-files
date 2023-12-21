@@ -91,6 +91,7 @@ winget install --exact --source winget --id Microsoft.VisualStudio.2022.Enterpri
 $Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
 
 # Install powershell modules
+Install-PackageProvider -Name NuGet -Force # Dependency
 Install-Module -Name SqlServer -Force # For Invoke-SqlCmd
 
 # Windows features
