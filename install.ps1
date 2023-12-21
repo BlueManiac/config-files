@@ -106,12 +106,14 @@ dotnet tool install --global dotnet-format
 
 # VARIOUS
 
-# Url to github repository
+# Git configuration
 $githubUrl = 'https://raw.githubusercontent.com/BlueManiac/config-files/master'
-
-# Copy .gitconfig
 $filePath = "$Env:UserProfile\.gitconfig"
+$hooksPath = "$Env:UserProfile\git-hooks"
 Invoke-WebRequest -Uri "$githubUrl/.gitconfig" -OutFile $filePath
+New-Item -ItemType directory -ErrorAction SilentlyContinue -Path $hooksPath
+Invoke-WebRequest -Uri "$githubUrl/git-hooks/post-checkout" -OutFile "$hooksPath\post-checkout"
+git config --global core.hooksPath $hooksPath
 
 # Create directories
 New-Item -ItemType directory -ErrorAction SilentlyContinue -Path 'C:\Private'

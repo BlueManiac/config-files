@@ -1,0 +1,14 @@
+#!C:/Program\ Files/Git/usr/bin/sh.exe
+
+name="BlueManiac"
+email="bluemaniac@users.noreply.github.com"
+
+# Check if the remote origin URL contains "github.com"
+if git remote -v | grep -q "github.com"; then
+	if [ -z "$(git config --local user.name)" ]; then
+		echo "Setting name to $name"
+		git config user.name $name
+		echo "Setting email to $email"
+		git config user.email $email
+	fi
+fi

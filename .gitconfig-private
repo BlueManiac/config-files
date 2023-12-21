@@ -1,30 +1,30 @@
 [diff]
-tool = bc3
+	tool = bc3
 
 [difftool "bc3"]
-path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
-cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -expandall -leftreadonly "$LOCAL" "$REMOTE"
-trustExitCode = true
+	path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
+	cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -expandall -leftreadonly "$LOCAL" "$REMOTE"
+	trustExitCode = true
 
 [merge]
-tool = bc3
+	tool = bc3
 
 [mergetool "bc3"]
-path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
-cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -leftreadonly -centerreadonly "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-trustExitcode = true
+	path = C:/Program Files (x86)/Beyond Compare 3/BCompare.exe
+	cmd = \"C:/Program Files (x86)/Beyond Compare 3/BCompare.exe\" -leftreadonly -centerreadonly "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+	trustExitcode = true
 
 [alias]
-bc = !git ar && git difftool --dir-diff --no-symlinks --staged && git ar && :
-ci = commit
-st = status
-addremove = add -A
-ar = add -A
-discard = !git reset --hard && git clean -fxd
+	bc = !git ar && git difftool --dir-diff --no-symlinks --staged && git ar && :
+	ci = commit
+	st = status
+	addremove = add -A
+	ar = add -A
+	discard = !git reset --hard && git clean -fxd
 
 [core]
-editor = notepad
+	editor = notepad
 
 [user]
-name = BlueManiac
-email = bluemaniac@users.noreply.github.com
+	name = BlueManiac
+	email = bluemaniac@users.noreply.github.com
