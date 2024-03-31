@@ -68,7 +68,7 @@ winget install --exact --source winget --scope machine --id Microsoft.AzureCLI
 winget install --exact --source winget --scope machine --id Microsoft.PowerToys
 #winget install --exact --source winget --scope machine --id Microsoft.SQLServerManagementStudio
 winget install --exact --source winget --scope machine --id Microsoft.Teams
-winget install --exact --source winget --scope machine --id Microsoft.VisualStudioCode
+winget install --exact --source winget --scope machine --id Microsoft.VisualStudioCode --override "/verysilent /suppressmsgboxes /mergetasks=!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"
 winget install --exact --source winget --scope machine --id Notepad++.Notepad++
 winget install --exact --source winget --scope machine --id OpenJS.NodeJS
 #winget install --exact --source winget --scope machine --id Oracle.JavaRuntimeEnvironment
