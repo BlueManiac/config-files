@@ -79,7 +79,6 @@ winget install --exact --source winget --scope machine --id VideoLAN.VLC
 winget install --exact --source winget --scope machine --id WinDirStat.WinDirStat
 winget install --exact --source winget --scope machine --id dotPDNLLC.paintdotnet
 winget install --exact --source winget --scope machine --id mRemoteNG.mRemoteNG
-winget install --exact --source winget --scope machine --id pnpm.pnpm
 
 # User apps
 winget install --exact --source winget --scope user --id Discord.Discord
@@ -91,6 +90,9 @@ winget install --exact --source winget --id Microsoft.VisualStudio.2022.Enterpri
 
 # Reload enviroment variables
 $Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+# Install global npm packages
+npm install -g pnpm
 
 # Install powershell modules
 Install-PackageProvider -Name NuGet -Force # Dependency
