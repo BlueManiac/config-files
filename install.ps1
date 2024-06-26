@@ -108,9 +108,6 @@ dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"
 dotnet tool install --global dotnet-outdated-tool
 dotnet tool install --global dotnet-format
 
-# npm packages
-npm install -g pnpm
-
 # VARIOUS
 
 # Git configuration
