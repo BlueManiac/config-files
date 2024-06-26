@@ -56,6 +56,7 @@ Remove-Item $path
 # Microsoft store apps
 winget install --exact --source msstore --id 9P07XNM5CHP0 --accept-package-agreements # Ambie
 winget install --exact --source msstore --id 9P7KNL5RWT25 --accept-package-agreements # Sysinternals Suite
+winget install --exact --source msstore --id 9NCBCSZSJRSB --accept-package-agreements # Spotify
 
 # Machine apps
 winget install --exact --source winget --scope machine --id 7zip.7zip
@@ -79,7 +80,7 @@ winget install --exact --source winget --scope machine --id VideoLAN.VLC
 winget install --exact --source winget --scope machine --id WinDirStat.WinDirStat
 winget install --exact --source winget --scope machine --id dotPDNLLC.paintdotnet
 winget install --exact --source winget --scope machine --id mRemoteNG.mRemoteNG
-winget install --exact --source winget --scope machine --id pnpm.pnpm
+winget install --exact --source winget --moniker python3
 
 # User apps
 winget install --exact --source winget --scope user --id Discord.Discord
@@ -103,6 +104,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRes
 dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"
 dotnet tool install --global dotnet-outdated-tool
 dotnet tool install --global dotnet-format
+
+# npm packages
+npm install -g pnpm
 
 # VARIOUS
 
@@ -137,6 +141,7 @@ Add-MpPreference -ExclusionProcess 'dotnet.exe'
 Add-MpPreference -ExclusionProcess 'msbuild.exe'
 Add-MpPreference -ExclusionProcess 'node.exe'
 Add-MpPreference -ExclusionProcess 'npm.exe'
+Add-MpPreference -ExclusionProcess 'pnpm.exe'
 
 Write-Host "Press any key to continue ..."
 $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
