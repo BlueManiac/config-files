@@ -57,6 +57,7 @@ Remove-Item $path
 winget install --exact --source msstore --id 9P07XNM5CHP0 --accept-package-agreements # Ambie
 winget install --exact --source msstore --id 9P7KNL5RWT25 --accept-package-agreements # Sysinternals Suite
 winget install --exact --source msstore --id 9NCBCSZSJRSB --accept-package-agreements # Spotify
+winget install --exact --source msstore --id XP89DCGQ3K6VLD --accept-package-agreements # PowerToys 
 
 # Machine apps
 winget install --exact --source winget --scope machine --id 7zip.7zip
@@ -66,7 +67,6 @@ winget install --exact --source winget --scope machine --id Brave.Brave
 winget install --exact --source winget --scope machine --id Git.Git
 winget install --exact --source winget --scope machine --id GitHub.cli
 winget install --exact --source winget --scope machine --id Microsoft.AzureCLI
-winget install --exact --source winget --scope machine --id Microsoft.PowerToys
 #winget install --exact --source winget --scope machine --id Microsoft.SQLServerManagementStudio
 winget install --exact --source winget --scope machine --id Microsoft.Teams
 winget install --exact --source winget --scope machine --id Microsoft.VisualStudioCode --override "/verysilent /suppressmsgboxes /mergetasks=!runcode,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath"
